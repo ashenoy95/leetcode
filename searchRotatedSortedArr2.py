@@ -21,9 +21,8 @@ class Solution(object):
             else:
                 res = self.binarySearch(nums, left, mid-1, target)
                 if not res:
-                    return self.binarySearch(nums, mid+1, right, target)
-                else:
-                    return res
+                    res = self.binarySearch(nums, mid+1, right, target)
+                return res
     
     def search(self, nums, target):
         """
