@@ -43,7 +43,7 @@ class Trie(object):
             parent = parent.children[index]
             if not parent:
                 return False
-        return parent!=None and parent.end
+        return parent.end
         
     def startsWith(self, prefix):
         """
