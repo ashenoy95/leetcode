@@ -4,7 +4,6 @@ class Node:
         self.end = False
         
 class Trie(object):
-
     def __init__(self):
         """
         Initialize your data structure here.
