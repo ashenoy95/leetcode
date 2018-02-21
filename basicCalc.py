@@ -50,11 +50,7 @@ class Solution(object):
             op = stack2.pop()
             op2 = int(stack1.pop())
             op1 = int(stack1.pop())
-            if op=='/':
-                stack1.append(op1//op2)
-            elif op=='*':
-                stack1.append(op1*op2)
-            elif op=='+':
+            if op=='+':
                 stack1.append(op1+op2)
             else:
                 stack1.append(op1-op2)
