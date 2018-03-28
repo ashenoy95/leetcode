@@ -1,3 +1,5 @@
+# detecting cycle in directed graph 
+
 class Solution(object):
     def dfs(self, course, prerequisites, white, gray, black):
         gray.add(course)
