@@ -22,10 +22,10 @@ class Solution(object):
 
             curr_level = [node for node in q]
             q = []
-            for node in curr_level:
-                if node.left:
-                    q.append(node.left) 
-                if node.right:
-                    q.append(node.right)
+            for succ in curr_level:
+                if succ.left:
+                    q.append(succ.left) 
+                if succ.right:
+                    q.append(succ.right)
             
-        return level_order    
+        return level_order
