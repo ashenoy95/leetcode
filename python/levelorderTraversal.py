@@ -13,23 +13,19 @@ class Solution(object):
         """
         if not root:
             return []
-        q = [root]
+        else:
+            q = [root]
         level_order = []
-        level = []
-        items = 1
         
         while q:
-            node = q.pop(0)
-            items -= 1
-            if node.left:
-                q.append(node.left)
-            if node.right:
-                q.append(node.right)
-            level.append(node.val)
-            if items==0:
-                level_order.append(level)
-                # empty level only when all nodes in that level are visited
-                level = []  
-                items = len(q)
-        return level_order
+            level_order.append([node.val for node in q])
+
+            curr_level = [node for node in q]
+            q = []
+            for node in curr_level:
+                if node.left:
+                    q.append(node.left) 
+                if node.right:
+                    q.append(node.right)
             
+        return level_order    
