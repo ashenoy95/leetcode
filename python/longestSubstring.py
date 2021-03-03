@@ -1,26 +1,17 @@
-class Solution(object):    
-    def lengthOfLongestSubstring(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
-        hashmap = {}
-        temp = 0
-        l = 0
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
         i = 0
-        while (i<len(s)):
-            if s[i] not in hashmap: 
-                hashmap[s[i]] = i
-                temp += 1
-                i += 1
-            else:
-                j = hashmap[s[i]]
-                i = j+1
-                hashmap = {}
-                if temp>l:
-                    l = temp
-                temp = 0
-        return max(temp, l)
-                                     
+        chars = {}
+        longest = 0
+        
+        for j in range(len(s)):
+            if s[j] in chars:
+                # reason for max():
+                # e.g.: if 'a' is at i=0 & a different char is repeated between 1 <= i < n, i > 1
+                # now, if 'a' is repeated, i should not be set as 1, rather max(1, i)
+                i = max(chars[s[j]], i)
                 
-                
+            chars[s[j]] = j + 1
+            longest = max(longest, j - i + 1)
+
+        return longest
