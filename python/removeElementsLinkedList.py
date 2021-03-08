@@ -17,7 +17,6 @@ class Solution:
         
         while node.next:
             if node.next.val == val:
-                # temp = node.next
                 node.next = node.next.next
             else:
                 node = node.next
