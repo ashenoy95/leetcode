@@ -1,13 +1,11 @@
-from collections import deque
-
 class MyQueue:
-
     def __init__(self):
         """
         Initialize your data structure here.
         """
-        self.s1 = deque()
-        self.s2 = deque()
+        self.s1 = []
+        self.s2 = []
+        
         
     def push(self, x):
         """
@@ -17,14 +15,17 @@ class MyQueue:
         """
         self.s1.append(x)
         
+        
     def pop(self):
         """
         Removes the element from in front of queue and returns that element.
         :rtype: int
         """
+        front = None
+        
         for i in range(len(self.s1)):
             self.s2.append(self.s1.pop())
-            
+        
         front = self.s2.pop()
         
         for i in range(len(self.s2)):
@@ -32,13 +33,16 @@ class MyQueue:
 
         return front
         
+        
     def peek(self):
         """
         Get the front element.
         :rtype: int
         """
-        return self.s1[0]
+        if self.s1:
+            return self.s1[0]
 
+    
     def empty(self):
         """
         Returns whether the queue is empty.
