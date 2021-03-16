@@ -27,10 +27,6 @@ class Solution:
     
     
     def kSum(self, nums, target, k):
-        print()
-        print('nums:', nums)
-        print('k:', k)
-        print('target:', target)
         result = []
         if (not nums) or (sum(nums[:k]) > target) or (sum(nums[-k:]) < target):
             return []
@@ -45,7 +41,6 @@ class Solution:
             k_minus_sums = self.kSum(nums[i+1:], target-nums[i], k-1)
             for s in k_minus_sums:
                 result.append([nums[i]] + s)
-                print(result)
     
         return result
         
