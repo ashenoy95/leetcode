@@ -28,6 +28,11 @@ class Solution:
     
     def kSum(self, nums, target, k):
         result = []
+        
+        # base case(s):
+        # 1. len(nums) == 0
+        # 2. if sum of k smallest values in nums (sorted) < target, 4Sum = []
+        # 3. similarly, if sum of k largest values in nums > target, 4Sum = []
         if (not nums) or (sum(nums[:k]) > target) or (sum(nums[-k:]) < target):
             return []
         
@@ -35,9 +40,11 @@ class Solution:
             return self.twoSum(nums, target)
         
         for i in range(len(nums)):
+            # ignore dupes
             if (i > 0) and (nums[i] == nums[i-1]):
                 continue
-                
+            
+            # get combos for (k-1)Sum 
             k_minus_sums = self.kSum(nums[i+1:], target-nums[i], k-1)
             for s in k_minus_sums:
                 result.append([nums[i]] + s)
